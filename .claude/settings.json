@@ -32,7 +32,8 @@
       "Bash(xcrun notarytool:*)",
       "Bash(xcodebuild -project MacTrayCommands.xcodeproj -scheme MacTrayCommands -configuration Release build CONFIGURATION_BUILD_DIR=/tmp/MacTrayCommandsBuild DEVELOPMENT_TEAM=H7TH8723VJ)",
       "Bash(xcrun stapler:*)",
-      "Bash(chmod +x /Users/qianchen/code/incubator/mac_tray_commands/release.sh)"
+      "Bash(chmod +x /Users/qianchen/code/incubator/mac_tray_commands/release.sh)",
+      "Bash(open /Users/qianchen/code/incubator/mac_tray_commands/MacTrayCommands/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x.png)"
     ],
     "additionalDirectories": [
       "/private/tmp/MacTrayCommandsBuild",
