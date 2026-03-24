@@ -24,13 +24,22 @@
       "Bash(shasum -a 256 /tmp/MacTrayCommands.dmg)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(gh release:*)",
+      "Bash(git push:*)",
+      "Bash(security find-identity:*)",
+      "Bash(ditto -c -k --keepParent MacTrayCommands.app MacTrayCommands.zip)",
+      "Bash(xcrun notarytool:*)",
+      "Bash(xcodebuild -project MacTrayCommands.xcodeproj -scheme MacTrayCommands -configuration Release build CONFIGURATION_BUILD_DIR=/tmp/MacTrayCommandsBuild DEVELOPMENT_TEAM=H7TH8723VJ)",
+      "Bash(xcrun stapler:*)",
+      "Bash(chmod +x /Users/qianchen/code/incubator/mac_tray_commands/release.sh)"
     ],
     "additionalDirectories": [
       "/private/tmp/MacTrayCommandsBuild",
       "/Users/qianchen/Library/Developer/Xcode/DerivedData/MacTrayCommands-fzahncnqvzmitsgjppmdkpxybkhf",
       "/tmp",
-      "/private/tmp"
+      "/private/tmp",
+      "/Users/qianchen/code/incubator/mac_tray_commands"
     ]
   }
 }

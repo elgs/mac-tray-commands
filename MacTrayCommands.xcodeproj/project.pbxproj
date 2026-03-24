@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7DB0540FB98141309E6A91FC /* MacTrayCommandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC394B747A4DB19D416549 /* MacTrayCommandsApp.swift */; };
-		F3E90689E19F4E268AAAEAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E7FC80E7A4F859824FFB6 /* AppDelegate.swift */; };
-		C9A9C5BA6F30481DB79BA431 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E22186C84423B9F157893 /* Command.swift */; };
-		F7A5865ACEBD4F00909BAB22 /* CommandStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660B95545684BE9AC776B6F /* CommandStore.swift */; };
-		456F76D315E24851897DE581 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45CE7B1CEC480C81702E1F /* CommandRunner.swift */; };
-		F8646E3F0B254673AB97BD2A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7CE8E2AE84620A482E23D /* SettingsView.swift */; };
-		DFC82100FBEB41BEBCFB23C3 /* CommandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */; };
-		55865C70829447DCA9371A44 /* CommandEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB05FD69893E4911919F7D31 /* CommandEditView.swift */; };
-		FC0CF3A6B30E458DA2DF7DEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E5F80AC0D0B4A58BBFFDC73 /* Assets.xcassets */; };
 		137388450823420EAE3D32CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564DE5D6BD5B4970B7868151 /* Preview Assets.xcassets */; };
+		456F76D315E24851897DE581 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F45CE7B1CEC480C81702E1F /* CommandRunner.swift */; };
+		55865C70829447DCA9371A44 /* CommandEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB05FD69893E4911919F7D31 /* CommandEditView.swift */; };
+		7DB0540FB98141309E6A91FC /* MacTrayCommandsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC394B747A4DB19D416549 /* MacTrayCommandsApp.swift */; };
+		C9A9C5BA6F30481DB79BA431 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E22186C84423B9F157893 /* Command.swift */; };
+		DFC82100FBEB41BEBCFB23C3 /* CommandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */; };
+		F3E90689E19F4E268AAAEAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E7FC80E7A4F859824FFB6 /* AppDelegate.swift */; };
+		F7A5865ACEBD4F00909BAB22 /* CommandStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660B95545684BE9AC776B6F /* CommandStore.swift */; };
+		F8646E3F0B254673AB97BD2A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7CE8E2AE84620A482E23D /* SettingsView.swift */; };
+		FC0CF3A6B30E458DA2DF7DEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E5F80AC0D0B4A58BBFFDC73 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1725E9328DE24A71A2B3B049 /* MacTrayCommands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTrayCommands.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEAC394B747A4DB19D416549 /* MacTrayCommandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTrayCommandsApp.swift; sourceTree = "<group>"; };
 		2A6E7FC80E7A4F859824FFB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A38E22186C84423B9F157893 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		2E5F80AC0D0B4A58BBFFDC73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandListView.swift; sourceTree = "<group>"; };
+		564DE5D6BD5B4970B7868151 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6660B95545684BE9AC776B6F /* CommandStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandStore.swift; sourceTree = "<group>"; };
 		8F45CE7B1CEC480C81702E1F /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
-		F8C7CE8E2AE84620A482E23D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandListView.swift; sourceTree = "<group>"; };
-		BB05FD69893E4911919F7D31 /* CommandEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandEditView.swift; sourceTree = "<group>"; };
-		2E5F80AC0D0B4A58BBFFDC73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		564DE5D6BD5B4970B7868151 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A38E22186C84423B9F157893 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		A84D235DB5654B76BE87E27F /* MacTrayCommands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacTrayCommands.entitlements; sourceTree = "<group>"; };
+		BB05FD69893E4911919F7D31 /* CommandEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandEditView.swift; sourceTree = "<group>"; };
+		DEAC394B747A4DB19D416549 /* MacTrayCommandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTrayCommandsApp.swift; sourceTree = "<group>"; };
+		F8C7CE8E2AE84620A482E23D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +45,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E2D79595755E42A49568007F = {
+		32973A06CD184856B3DE6C0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ABCCF72BA8554409860A273A /* MacTrayCommands */,
-				832FD440E61B4F3A86CBDDD8 /* Products */,
+				F8C7CE8E2AE84620A482E23D /* SettingsView.swift */,
+				2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */,
+				BB05FD69893E4911919F7D31 /* CommandEditView.swift */,
 			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		498CC6B6341D4AEF9FD7734E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				564DE5D6BD5B4970B7868151 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		505D9FCB99F54CA19ADABFA8 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				6660B95545684BE9AC776B6F /* CommandStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		832FD440E61B4F3A86CBDDD8 /* Products */ = {
@@ -77,22 +95,6 @@
 			path = MacTrayCommands;
 			sourceTree = "<group>";
 		};
-		E2AB76B77F9645C8BF4390CC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A38E22186C84423B9F157893 /* Command.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		505D9FCB99F54CA19ADABFA8 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				6660B95545684BE9AC776B6F /* CommandStore.swift */,
-			);
-			path = Stores;
-			sourceTree = "<group>";
-		};
 		D5A8911BCB3942B1A7D06CFB /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,22 +103,20 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		32973A06CD184856B3DE6C0E /* Views */ = {
+		E2AB76B77F9645C8BF4390CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F8C7CE8E2AE84620A482E23D /* SettingsView.swift */,
-				2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */,
-				BB05FD69893E4911919F7D31 /* CommandEditView.swift */,
+				A38E22186C84423B9F157893 /* Command.swift */,
 			);
-			path = Views;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		498CC6B6341D4AEF9FD7734E /* Preview Content */ = {
+		E2D79595755E42A49568007F = {
 			isa = PBXGroup;
 			children = (
-				564DE5D6BD5B4970B7868151 /* Preview Assets.xcassets */,
+				ABCCF72BA8554409860A273A /* MacTrayCommands */,
+				832FD440E61B4F3A86CBDDD8 /* Products */,
 			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +203,123 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		301C9900074F419FBCFA7E50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacTrayCommands/MacTrayCommands.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacTrayCommands/Preview Content\"";
+				DEVELOPMENT_TEAM = 54F5RGRT44;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mac Tray Commands";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MacTrayCommands;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CA9EA175C270420E8EFC72B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		D264CAAD99BD437FAFACFB7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacTrayCommands/MacTrayCommands.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacTrayCommands/Preview Content\"";
+				DEVELOPMENT_TEAM = 54F5RGRT44;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mac Tray Commands";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MacTrayCommands;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		FFECEB57916B457DAE7DE97A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -266,136 +383,23 @@
 			};
 			name = Debug;
 		};
-		CA9EA175C270420E8EFC72B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
-			};
-			name = Release;
-		};
-		301C9900074F419FBCFA7E50 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MacTrayCommands/MacTrayCommands.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MacTrayCommands/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F5RGRT44;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mac Tray Commands";
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MacTrayCommands;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		D264CAAD99BD437FAFACFB7B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MacTrayCommands/MacTrayCommands.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MacTrayCommands/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F5RGRT44;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mac Tray Commands";
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MacTrayCommands;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B8B968E6430B40C992945BE5 /* Build configuration list for PBXProject "MacTrayCommands" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FFECEB57916B457DAE7DE97A /* Debug */,
-				CA9EA175C270420E8EFC72B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5EC113FDE5B34BAFA82B14C6 /* Build configuration list for PBXNativeTarget "MacTrayCommands" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				301C9900074F419FBCFA7E50 /* Debug */,
 				D264CAAD99BD437FAFACFB7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8B968E6430B40C992945BE5 /* Build configuration list for PBXProject "MacTrayCommands" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFECEB57916B457DAE7DE97A /* Debug */,
+				CA9EA175C270420E8EFC72B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
