@@ -102,6 +102,9 @@ git commit -m "Update mac-tray-commands to v$VERSION"
 git push
 rm -rf "$TAP_DIR"
 
+echo "==> Updating local tap..."
+cd "$(brew --repo elgs/taps)" && git pull -q
+
 echo ""
 echo "==> Done! Released v$VERSION"
 echo "    GitHub: https://github.com/$REPO/releases/tag/v$VERSION"
