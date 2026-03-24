@@ -1,36 +1,25 @@
 #!/bin/bash
 #
-# Release script for Mac Tray Commands
+# Release script: build, sign, notarize, publish
 #
 # Usage: ./release.sh <version>
 #   e.g. ./release.sh 1.0.1
 #
-# What it does:
-#   1. Builds a Release binary signed with Developer ID
-#   2. Submits to Apple for notarization and staples the ticket
-#   3. Creates a DMG at /tmp/MacTrayCommands.dmg
-#   4. Uploads to GitHub as a new release
-#   5. Updates the Homebrew cask with new version and SHA
-#
 # Prerequisites:
 #   - Xcode with Developer ID certificate
 #   - Notarization credentials stored in keychain:
-#     xcrun notarytool store-credentials "MacTrayCommands"
+#     xcrun notarytool store-credentials "<SCHEME>"
 #   - GitHub CLI (gh) authenticated
+#   - .project.env in the same directory
 #
 set -euo pipefail
 
-# Config
-SCHEME="MacTrayCommands"
-TEAM_ID="H7TH8723VJ"
-SIGN_IDENTITY="Developer ID Application: Qian Chen (H7TH8723VJ)"
-KEYCHAIN_PROFILE="MacTrayCommands"
-REPO="elgs/mac-tray-commands"
-TAP_REPO="elgs/homebrew-taps"
-BUILD_DIR="/tmp/MacTrayCommandsBuild"
-DMG_PATH="/tmp/MacTrayCommands.dmg"
+source "$(dirname "$0")/.project.env"
 
-# Parse version from args
+SIGN_IDENTITY="Developer ID Application: $(security find-identity -v -p codesigning | grep "$TEAM_ID" | head -1 | sed 's/.*"\(.*\)"/\1/')"
+BUILD_DIR="/tmp/${SCHEME}Build"
+DMG_PATH="/tmp/${SCHEME}.dmg"
+
 VERSION="${1:-}"
 if [ -z "$VERSION" ]; then
     echo "Usage: ./release.sh <version>"
@@ -40,7 +29,7 @@ fi
 
 echo "==> Building Release..."
 rm -rf "$BUILD_DIR"
-xcodebuild -project MacTrayCommands.xcodeproj \
+xcodebuild -project "$SCHEME.xcodeproj" \
     -scheme "$SCHEME" \
     -configuration Release \
     build \
@@ -62,43 +51,43 @@ ditto -c -k --keepParent "$SCHEME.app" "$SCHEME.zip"
 
 echo "==> Submitting for notarization..."
 xcrun notarytool submit "$SCHEME.zip" \
-    --keychain-profile "$KEYCHAIN_PROFILE" \
+    --keychain-profile "$SCHEME" \
     --wait
 
 echo "==> Stapling ticket..."
 xcrun stapler staple "$BUILD_DIR/$SCHEME.app"
 
 echo "==> Creating DMG..."
-rm -rf /tmp/MacTrayCommandsDMG "$DMG_PATH"
-mkdir -p /tmp/MacTrayCommandsDMG
-cp -R "$BUILD_DIR/$SCHEME.app" /tmp/MacTrayCommandsDMG/
-ln -s /Applications /tmp/MacTrayCommandsDMG/Applications
-hdiutil create -volname "Mac Tray Commands" \
-    -srcfolder /tmp/MacTrayCommandsDMG \
+rm -rf "/tmp/${SCHEME}DMG" "$DMG_PATH"
+mkdir -p "/tmp/${SCHEME}DMG"
+cp -R "$BUILD_DIR/$SCHEME.app" "/tmp/${SCHEME}DMG/"
+ln -s /Applications "/tmp/${SCHEME}DMG/Applications"
+hdiutil create -volname "$SCHEME" \
+    -srcfolder "/tmp/${SCHEME}DMG" \
     -ov -format UDZO "$DMG_PATH"
 
 SHA256=$(shasum -a 256 "$DMG_PATH" | awk '{print $1}')
 echo "==> DMG SHA256: $SHA256"
 
 echo "==> Updating GitHub release v$VERSION..."
-gh release delete "v$VERSION" --repo "$REPO" --yes 2>/dev/null || true
+gh release delete "v$VERSION" --repo "$GITHUB_REPO" --yes 2>/dev/null || true
 gh release create "v$VERSION" "$DMG_PATH" \
-    --repo "$REPO" \
+    --repo "$GITHUB_REPO" \
     --title "v$VERSION" \
-    --notes "## Mac Tray Commands v$VERSION
+    --notes "## $SCHEME v$VERSION
 
-Signed and notarized macOS menu bar app for running custom shell commands.
+Signed and notarized.
 
 **SHA256:** \`$SHA256\`"
 
 echo "==> Updating Homebrew cask..."
 TAP_DIR=$(mktemp -d)
-gh repo clone "$TAP_REPO" "$TAP_DIR" -- -q
+gh repo clone "$HOMEBREW_TAP_REPO" "$TAP_DIR" -- -q
 cd "$TAP_DIR"
-sed -i '' "s/version \".*\"/version \"$VERSION\"/" Casks/mac-tray-commands.rb
-sed -i '' "s/sha256 \".*\"/sha256 \"$SHA256\"/" Casks/mac-tray-commands.rb
-git add Casks/mac-tray-commands.rb
-git commit -m "Update mac-tray-commands to v$VERSION"
+sed -i '' "s/version \".*\"/version \"$VERSION\"/" "Casks/${GITHUB_REPO#*/}.rb"
+sed -i '' "s/sha256 \".*\"/sha256 \"$SHA256\"/" "Casks/${GITHUB_REPO#*/}.rb"
+git add "Casks/${GITHUB_REPO#*/}.rb"
+git commit -m "Update ${GITHUB_REPO#*/} to v$VERSION"
 git push
 rm -rf "$TAP_DIR"
 
@@ -107,5 +96,5 @@ cd "$(brew --repo elgs/taps)" && git pull -q
 
 echo ""
 echo "==> Done! Released v$VERSION"
-echo "    GitHub: https://github.com/$REPO/releases/tag/v$VERSION"
-echo "    Install: brew tap elgs/taps && brew install --cask mac-tray-commands"
+echo "    GitHub: https://github.com/$GITHUB_REPO/releases/tag/v$VERSION"
+echo "    Install: brew tap elgs/taps && brew install --cask ${GITHUB_REPO#*/}"
