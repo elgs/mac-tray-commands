@@ -19,6 +19,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
 
         buildMenu()
+        setupMainMenu()
         registerGlobalHotKey()
 
         NotificationCenter.default.addObserver(
@@ -29,25 +30,45 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         )
     }
 
+    private func setupMainMenu() {
+        let mainMenu = NSMenu()
+
+        let editMenu = NSMenu(title: "Edit")
+        editMenu.addItem(NSMenuItem(title: "Undo", action: Selector(("undo:")), keyEquivalent: "z"))
+        editMenu.addItem(NSMenuItem(title: "Redo", action: Selector(("redo:")), keyEquivalent: "Z"))
+        editMenu.addItem(.separator())
+        editMenu.addItem(NSMenuItem(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"))
+        editMenu.addItem(NSMenuItem(title: "Copy", action: #selector(NSText.copy(_:)), keyEquivalent: "c"))
+        editMenu.addItem(NSMenuItem(title: "Paste", action: #selector(NSText.paste(_:)), keyEquivalent: "v"))
+        editMenu.addItem(NSMenuItem(title: "Select All", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a"))
+
+        let editMenuItem = NSMenuItem()
+        editMenuItem.submenu = editMenu
+        mainMenu.addItem(editMenuItem)
+
+        NSApp.mainMenu = mainMenu
+    }
+
     private func registerGlobalHotKey() {
-        let hotKeyID = EventHotKeyID(signature: OSType(0x4D544321), id: 1) // "MTC!"
-        let modifiers: UInt32 = UInt32(controlKey | optionKey)
-        let keyCode: UInt32 = UInt32(kVK_ANSI_L)
-
+        let hotKeyID = EventHotKeyID(signature: OSType(0x4D544321), id: 1)
         var ref: EventHotKeyRef?
-        let status = RegisterEventHotKey(keyCode, modifiers, hotKeyID,
-                                         GetApplicationEventTarget(), 0, &ref)
-        if status == noErr {
-            hotKeyRef = ref
-        }
+        RegisterEventHotKey(
+            UInt32(kVK_ANSI_L),
+            UInt32(controlKey | optionKey),
+            hotKeyID,
+            GetApplicationEventTarget(),
+            0,
+            &ref
+        )
+        hotKeyRef = ref
 
-        var eventSpec = EventTypeSpec(eventClass: OSType(kEventClassKeyboard),
-                                      eventKind: UInt32(kEventHotKeyPressed))
-        InstallEventHandler(GetApplicationEventTarget(), { _, event, _ -> OSStatus in
+        var eventSpec = EventTypeSpec(
+            eventClass: OSType(kEventClassKeyboard),
+            eventKind: UInt32(kEventHotKeyPressed)
+        )
+        InstallEventHandler(GetApplicationEventTarget(), { _, _, _ -> OSStatus in
             guard let appDelegate = NSApp.delegate as? AppDelegate else { return noErr }
-            DispatchQueue.main.async {
-                appDelegate.statusItem.button?.performClick(nil)
-            }
+            appDelegate.statusItem.button?.performClick(nil)
             return noErr
         }, 1, &eventSpec, nil, nil)
     }
@@ -60,8 +81,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             empty.isEnabled = false
             menu.addItem(empty)
         } else {
-            for command in store.commands {
-                let item = NSMenuItem(title: command.name, action: #selector(runCommand(_:)), keyEquivalent: "")
+            for (i, command) in store.commands.enumerated() {
+                let item = NSMenuItem(title: "\(i). \(command.name)", action: #selector(runCommand(_:)), keyEquivalent: "")
                 item.representedObject = command
                 item.toolTip = command.shellCommand
                 menu.addItem(item)

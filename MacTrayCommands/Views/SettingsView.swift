@@ -30,5 +30,10 @@ struct SettingsView: View {
             }
         }
         .frame(minWidth: 560, minHeight: 380)
+        .onAppear {
+            if selectedID == nil {
+                selectedID = store.commands.first?.id
+            }
+        }
     }
 }
