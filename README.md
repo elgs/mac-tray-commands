@@ -19,9 +19,11 @@
 ## Features
 
 - **Menu bar access** — click the icon to see your commands, no Dock clutter
+- **Global shortcut** — press `⌃⌥L` (Ctrl+Opt+L) to open the menu from anywhere
 - **Two run modes** — open in Terminal (window stays open) or run silently in background
 - **Settings UI** — add, edit, and remove commands with a native SwiftUI interface
 - **Launch at Login** — toggle from the menu
+- **Signed and notarized** — no Gatekeeper warnings
 - **Persistent config** — commands saved to `~/Library/Application Support/MacTrayCommands/commands.json`
 
 ## Install
@@ -49,7 +51,7 @@ cp -R build/MacTrayCommands.app /Applications/
 ## Usage
 
 1. Launch the app — a `>` icon appears in your menu bar
-2. Click it to see your commands
+2. Click it or press **⌃⌥L** to see your commands
 3. Click **Settings…** to add, edit, or remove commands
 4. Each command has a **name**, a **shell command**, and a **run mode**:
    - **Open in Terminal** — runs in Terminal.app, window stays open when done

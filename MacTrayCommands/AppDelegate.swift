@@ -1,4 +1,5 @@
 import AppKit
+import Carbon.HIToolbox
 import ServiceManagement
 import SwiftUI
 
@@ -6,6 +7,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var statusItem: NSStatusItem!
     let store = CommandStore()
     private var settingsWindow: NSWindow?
+    private var hotKeyRef: EventHotKeyRef?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
@@ -17,6 +19,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
 
         buildMenu()
+        registerGlobalHotKey()
 
         NotificationCenter.default.addObserver(
             self,
@@ -24,6 +27,29 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             name: .commandsDidChange,
             object: nil
         )
+    }
+
+    private func registerGlobalHotKey() {
+        let hotKeyID = EventHotKeyID(signature: OSType(0x4D544321), id: 1) // "MTC!"
+        let modifiers: UInt32 = UInt32(controlKey | optionKey)
+        let keyCode: UInt32 = UInt32(kVK_ANSI_L)
+
+        var ref: EventHotKeyRef?
+        let status = RegisterEventHotKey(keyCode, modifiers, hotKeyID,
+                                         GetApplicationEventTarget(), 0, &ref)
+        if status == noErr {
+            hotKeyRef = ref
+        }
+
+        var eventSpec = EventTypeSpec(eventClass: OSType(kEventClassKeyboard),
+                                      eventKind: UInt32(kEventHotKeyPressed))
+        InstallEventHandler(GetApplicationEventTarget(), { _, event, _ -> OSStatus in
+            guard let appDelegate = NSApp.delegate as? AppDelegate else { return noErr }
+            DispatchQueue.main.async {
+                appDelegate.statusItem.button?.performClick(nil)
+            }
+            return noErr
+        }, 1, &eventSpec, nil, nil)
     }
 
     @objc func buildMenu() {
@@ -43,6 +69,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
 
         menu.addItem(.separator())
+
+        let shortcutHint = NSMenuItem(title: "Shortcut: ⌃⌥L", action: nil, keyEquivalent: "")
+        shortcutHint.isEnabled = false
+        menu.addItem(shortcutHint)
 
         let launchItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin(_:)), keyEquivalent: "")
         launchItem.state = SMAppService.mainApp.status == .enabled ? .on : .off
