@@ -16,7 +16,7 @@ set -euo pipefail
 
 source "$(dirname "$0")/.project.env"
 
-SIGN_IDENTITY="Developer ID Application: $(security find-identity -v -p codesigning | grep "$TEAM_ID" | head -1 | sed 's/.*"\(.*\)"/\1/')"
+SIGN_IDENTITY="$(security find-identity -v -p codesigning | grep "$TEAM_ID" | head -1 | sed 's/.*"\(.*\)"/\1/')"
 BUILD_DIR="/tmp/${SCHEME}Build"
 DMG_PATH="/tmp/${SCHEME}.dmg"
 
