@@ -6,41 +6,54 @@ struct CommandListView: View {
     @Binding var selectedID: UUID?
 
     var body: some View {
-        List(store.commands, selection: $selectedID) { command in
-            VStack(alignment: .leading, spacing: 2) {
-                Text(command.name)
-                    .fontWeight(.medium)
-                Text(command.shellCommand)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .truncationMode(.middle)
+        VStack(spacing: 0) {
+            List(store.commands, selection: $selectedID) { command in
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(command.name)
+                        .fontWeight(.medium)
+                    Text(command.shellCommand)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                }
+                .padding(.vertical, 2)
+                .tag(command.id)
             }
-            .padding(.vertical, 2)
-            .tag(command.id)
-        }
-        .toolbar {
-            ToolbarItemGroup {
-                Button(action: addCommand) {
-                    Image(systemName: "plus")
-                }
-                Button(action: removeSelected) {
-                    Image(systemName: "minus")
-                }
-                .disabled(selectedID == nil)
+
+            Divider()
+
+            HStack(spacing: 0) {
+                bottomButton(action: addCommand, systemImage: "plus")
+                bottomButton(action: removeSelected, systemImage: "minus")
+                    .disabled(selectedID == nil)
+
+                Divider().frame(height: 16)
+
+                bottomButton(action: moveUp, systemImage: "chevron.up")
+                    .disabled(!canMoveUp)
+                bottomButton(action: moveDown, systemImage: "chevron.down")
+                    .disabled(!canMoveDown)
 
                 Spacer()
 
-                Button(action: exportCommands) {
-                    Image(systemName: "square.and.arrow.up")
-                }
-                .help("Export commands")
-                Button(action: importCommands) {
-                    Image(systemName: "square.and.arrow.down")
-                }
-                .help("Import commands")
+                bottomButton(action: exportCommands, systemImage: "square.and.arrow.up")
+                    .help("Export commands")
+                bottomButton(action: importCommands, systemImage: "square.and.arrow.down")
+                    .help("Import commands")
             }
+            .padding(.horizontal, 4)
+            .frame(height: 24)
         }
+    }
+
+    private func bottomButton(action: @escaping () -> Void, systemImage: String) -> some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.system(size: 12))
+                .frame(width: 24, height: 24)
+        }
+        .buttonStyle(.borderless)
     }
 
     private func addCommand() {
@@ -82,6 +95,31 @@ struct CommandListView: View {
             store.add(command)
         }
         selectedID = store.commands.last?.id
+    }
+
+    private var selectedIndex: Int? {
+        guard let id = selectedID else { return nil }
+        return store.commands.firstIndex(where: { $0.id == id })
+    }
+
+    private var canMoveUp: Bool {
+        guard let index = selectedIndex else { return false }
+        return index > 0
+    }
+
+    private var canMoveDown: Bool {
+        guard let index = selectedIndex else { return false }
+        return index < store.commands.count - 1
+    }
+
+    private func moveUp() {
+        guard let index = selectedIndex, index > 0 else { return }
+        store.move(from: index, to: index - 1)
+    }
+
+    private func moveDown() {
+        guard let index = selectedIndex, index < store.commands.count - 1 else { return }
+        store.move(from: index, to: index + 1)
     }
 
     private func removeSelected() {

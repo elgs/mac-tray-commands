@@ -46,6 +46,16 @@ final class CommandStore: ObservableObject {
         save()
     }
 
+    func move(from source: Int, to destination: Int) {
+        guard source != destination,
+              source >= 0, source < commands.count,
+              destination >= 0, destination < commands.count
+        else { return }
+        let command = commands.remove(at: source)
+        commands.insert(command, at: destination)
+        save()
+    }
+
     func update(_ command: Command) {
         guard let index = commands.firstIndex(where: { $0.id == command.id }) else { return }
         commands[index] = command
