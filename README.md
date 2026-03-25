@@ -48,6 +48,22 @@ xcodebuild -scheme MacTrayCommands -configuration Release build CONFIGURATION_BU
 cp -R build/MacTrayCommands.app /Applications/
 ```
 
+## Screenshots
+
+### Menu Bar Dropdown
+Click the terminal icon in the menu bar or press **⌃⌥L** to see your commands. Each command is numbered for easy reference.
+
+<p align="center">
+  <img src="screenshots/menu.png" width="360" alt="Menu bar dropdown showing commands">
+</p>
+
+### Settings
+Add, edit, and remove commands. Choose between running in Terminal or silently in the background.
+
+<p align="center">
+  <img src="screenshots/settings.png" width="720" alt="Settings window with command editor">
+</p>
+
 ## Usage
 
 1. Launch the app — a terminal icon appears in your menu bar
