@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 struct CommandListView: View {
     @ObservedObject var store: CommandStore
@@ -27,6 +28,17 @@ struct CommandListView: View {
                     Image(systemName: "minus")
                 }
                 .disabled(selectedID == nil)
+
+                Spacer()
+
+                Button(action: exportCommands) {
+                    Image(systemName: "square.and.arrow.up")
+                }
+                .help("Export commands")
+                Button(action: importCommands) {
+                    Image(systemName: "square.and.arrow.down")
+                }
+                .help("Import commands")
             }
         }
     }
@@ -37,6 +49,39 @@ struct CommandListView: View {
         DispatchQueue.main.async {
             selectedID = new.id
         }
+    }
+
+    private func exportCommands() {
+        let panel = NSSavePanel()
+        panel.allowedContentTypes = [.json]
+        panel.nameFieldStringValue = "commands.json"
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        guard let data = try? encoder.encode(store.commands) else { return }
+        try? data.write(to: url, options: .atomic)
+    }
+
+    private func importCommands() {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [.json]
+        panel.allowsMultipleSelection = false
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        guard let data = try? Data(contentsOf: url),
+              let imported = try? JSONDecoder().decode([Command].self, from: data)
+        else {
+            let alert = NSAlert()
+            alert.messageText = "Invalid file"
+            alert.informativeText = "The file is not a valid commands JSON file."
+            alert.runModal()
+            return
+        }
+        // Assign new IDs to avoid duplicates
+        for var command in imported {
+            command.id = UUID()
+            store.add(command)
+        }
+        selectedID = store.commands.last?.id
     }
 
     private func removeSelected() {

@@ -24,6 +24,7 @@
 - **Settings UI** — add, edit, and remove commands with a native SwiftUI interface
 - **Launch at Login** — toggle from the menu
 - **Signed and notarized** — no Gatekeeper warnings
+- **Import/Export** — share or back up your commands as JSON
 - **Persistent config** — commands saved to `~/Library/Application Support/MacTrayCommands/commands.json`
 
 ## Install
