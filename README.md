@@ -50,7 +50,7 @@ cp -R build/MacTrayCommands.app /Applications/
 
 ## Usage
 
-1. Launch the app — a `>` icon appears in your menu bar
+1. Launch the app — a terminal icon appears in your menu bar
 2. Click it or press **⌃⌥L** to see your commands
 3. Click **Settings…** to add, edit, or remove commands
 4. Each command has a **name**, a **shell command**, and a **run mode**:
