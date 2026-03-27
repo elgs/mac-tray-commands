@@ -27,6 +27,9 @@ if [ -z "$VERSION" ]; then
     exit 1
 fi
 
+echo "==> Tagging v$VERSION..."
+git tag -f "v$VERSION"
+
 echo "==> Building Release..."
 rm -rf "$BUILD_DIR"
 xcodebuild -project "$SCHEME.xcodeproj" \

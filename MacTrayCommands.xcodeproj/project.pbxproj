@@ -132,6 +132,7 @@
 				B231D5AD698C4FB680EAAE22 /* Sources */,
 				E72452FA071D47CBB0BDB3F9 /* Frameworks */,
 				DB891BAAB4524ACC835E3F73 /* Resources */,
+				A1B2C3D4E5F67890AABBCCDD /* Set Version from Git Tag */,
 			);
 			buildRules = (
 			);
@@ -206,6 +207,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A1B2C3D4E5F67890AABBCCDD /* Set Version from Git Tag */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Version from Git Tag";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo \"0.0.0\")\nVERSION=${GIT_TAG#v}\nBUILD=$(git rev-list HEAD --count 2>/dev/null || echo \"1\")\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERSION\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
 		301C9900074F419FBCFA7E50 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -277,7 +295,7 @@
 				DEVELOPMENT_TEAM = 54F5RGRT44;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -366,7 +384,7 @@
 				DEVELOPMENT_TEAM = 54F5RGRT44;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
