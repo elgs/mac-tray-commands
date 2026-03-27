@@ -4,36 +4,47 @@ import AppKit
 struct CommandListView: View {
     @ObservedObject var store: CommandStore
     @Binding var selectedID: UUID?
+    @State private var showDeleteConfirmation = false
 
     var body: some View {
         VStack(spacing: 0) {
-            List(store.commands, selection: $selectedID) { command in
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(command.name)
-                        .fontWeight(.medium)
-                    Text(command.shellCommand)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
+            List(selection: $selectedID) {
+                ForEach(store.commands) { command in
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(command.name)
+                            .fontWeight(.medium)
+                        Text(command.shellCommand)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                            .truncationMode(.middle)
+                    }
+                    .padding(.vertical, 2)
+                    .tag(command.id)
                 }
-                .padding(.vertical, 2)
-                .tag(command.id)
+                .onMove(perform: onMove)
             }
 
             Divider()
 
             HStack(spacing: 0) {
                 bottomButton(action: addCommand, systemImage: "plus")
-                bottomButton(action: removeSelected, systemImage: "minus")
+                    .help("Add command")
+                bottomButton(action: { showDeleteConfirmation = true }, systemImage: "minus")
                     .disabled(selectedID == nil)
+                    .help("Delete command")
+                bottomButton(action: duplicateSelected, systemImage: "plus.square.on.square")
+                    .disabled(selectedID == nil)
+                    .help("Duplicate command")
 
                 Divider().frame(height: 16)
 
                 bottomButton(action: moveUp, systemImage: "chevron.up")
                     .disabled(!canMoveUp)
+                    .help("Move up")
                 bottomButton(action: moveDown, systemImage: "chevron.down")
                     .disabled(!canMoveDown)
+                    .help("Move down")
 
                 Spacer()
 
@@ -43,15 +54,25 @@ struct CommandListView: View {
                     .help("Import commands")
             }
             .padding(.horizontal, 4)
-            .frame(height: 24)
+            .frame(height: 28)
+        }
+        .alert("Delete Command", isPresented: $showDeleteConfirmation) {
+            Button("Delete", role: .destructive, action: removeSelected)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            if let id = selectedID, let command = store.commands.first(where: { $0.id == id }) {
+                Text("Are you sure you want to delete \"\(command.name)\"?")
+            } else {
+                Text("Are you sure you want to delete this command?")
+            }
         }
     }
 
     private func bottomButton(action: @escaping () -> Void, systemImage: String) -> some View {
         Button(action: action) {
             Image(systemName: systemImage)
-                .font(.system(size: 12))
-                .frame(width: 24, height: 24)
+                .font(.system(size: 14))
+                .frame(width: 28, height: 28)
         }
         .buttonStyle(.borderless)
     }
@@ -120,6 +141,21 @@ struct CommandListView: View {
     private func moveDown() {
         guard let index = selectedIndex, index < store.commands.count - 1 else { return }
         store.move(from: index, to: index + 1)
+    }
+
+    private func onMove(from source: IndexSet, to destination: Int) {
+        store.commands.move(fromOffsets: source, toOffset: destination)
+        store.save()
+    }
+
+    private func duplicateSelected() {
+        guard let id = selectedID,
+              let command = store.commands.first(where: { $0.id == id })
+        else { return }
+        let copy = store.duplicate(command)
+        DispatchQueue.main.async {
+            selectedID = copy.id
+        }
     }
 
     private func removeSelected() {

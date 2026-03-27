@@ -15,6 +15,7 @@
 		DFC82100FBEB41BEBCFB23C3 /* CommandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */; };
 		F3E90689E19F4E268AAAEAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E7FC80E7A4F859824FFB6 /* AppDelegate.swift */; };
 		F7A5865ACEBD4F00909BAB22 /* CommandStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660B95545684BE9AC776B6F /* CommandStore.swift */; };
+		9E1F3A5B7C2D4E6F8A0B1C3D /* ShellEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B2C9D1E5F48A0B6C8D4E2 /* ShellEditorView.swift */; };
 		F8646E3F0B254673AB97BD2A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7CE8E2AE84620A482E23D /* SettingsView.swift */; };
 		FC0CF3A6B30E458DA2DF7DEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E5F80AC0D0B4A58BBFFDC73 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		A38E22186C84423B9F157893 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		A84D235DB5654B76BE87E27F /* MacTrayCommands.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacTrayCommands.entitlements; sourceTree = "<group>"; };
 		BB05FD69893E4911919F7D31 /* CommandEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandEditView.swift; sourceTree = "<group>"; };
+		3A7B2C9D1E5F48A0B6C8D4E2 /* ShellEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellEditorView.swift; sourceTree = "<group>"; };
 		DEAC394B747A4DB19D416549 /* MacTrayCommandsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTrayCommandsApp.swift; sourceTree = "<group>"; };
 		F8C7CE8E2AE84620A482E23D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +53,7 @@
 				F8C7CE8E2AE84620A482E23D /* SettingsView.swift */,
 				2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */,
 				BB05FD69893E4911919F7D31 /* CommandEditView.swift */,
+				3A7B2C9D1E5F48A0B6C8D4E2 /* ShellEditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				F8646E3F0B254673AB97BD2A /* SettingsView.swift in Sources */,
 				DFC82100FBEB41BEBCFB23C3 /* CommandListView.swift in Sources */,
 				55865C70829447DCA9371A44 /* CommandEditView.swift in Sources */,
+				9E1F3A5B7C2D4E6F8A0B1C3D /* ShellEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

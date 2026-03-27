@@ -56,6 +56,19 @@ final class CommandStore: ObservableObject {
         save()
     }
 
+    func duplicate(_ command: Command) -> Command {
+        var copy = command
+        copy.id = UUID()
+        copy.name = command.name + " Copy"
+        if let index = commands.firstIndex(where: { $0.id == command.id }) {
+            commands.insert(copy, at: index + 1)
+        } else {
+            commands.append(copy)
+        }
+        save()
+        return copy
+    }
+
     func update(_ command: Command) {
         guard let index = commands.firstIndex(where: { $0.id == command.id }) else { return }
         commands[index] = command

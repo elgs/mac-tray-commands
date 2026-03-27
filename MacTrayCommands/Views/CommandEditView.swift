@@ -19,10 +19,10 @@ struct CommandEditView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Command").fontWeight(.medium)
-                TextEditor(text: $draft.shellCommand)
-                    .font(.system(.body, design: .monospaced))
-                    .frame(minHeight: 80)
-                    .border(Color(nsColor: .separatorColor))
+                ShellEditorWithLineNumbers(text: draft.shellCommand) { newText in
+                        draft.shellCommand = newText
+                    }
+                    .frame(minHeight: 80, maxHeight: .infinity)
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -41,8 +41,6 @@ struct CommandEditView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-
-            Spacer()
 
             HStack {
                 Spacer()

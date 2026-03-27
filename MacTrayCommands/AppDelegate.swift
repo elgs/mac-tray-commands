@@ -153,20 +153,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             )
             window.title = "MacTrayCommands — Settings"
             let controller = NSHostingController(rootView: SettingsView(store: store))
-            controller.preferredContentSize = NSSize(width: 900, height: 650)
             window.contentViewController = controller
             window.setContentSize(NSSize(width: 900, height: 650))
+            window.contentMinSize = NSSize(width: 560, height: 380)
             window.isReleasedWhenClosed = false
             window.center()
             window.delegate = self
             settingsWindow = window
         }
         NSApp.setActivationPolicy(.regular)
-        settingsWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        settingsWindow?.makeKeyAndOrderFront(nil)
     }
 
     func windowWillClose(_ notification: Notification) {
+        guard (notification.object as? NSWindow) === settingsWindow else { return }
         settingsWindow = nil
         NSApp.setActivationPolicy(.accessory)
     }
