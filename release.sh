@@ -27,13 +27,19 @@ if [ -z "$VERSION" ]; then
     exit 1
 fi
 
-echo "==> Tagging v$VERSION..."
-git tag -f "v$VERSION"
-
 BUILD_NUMBER=$(git rev-list HEAD --count)
 echo "==> Setting version to $VERSION ($BUILD_NUMBER)..."
 sed -i '' "s/MARKETING_VERSION = .*/MARKETING_VERSION = $VERSION;/" "$SCHEME.xcodeproj/project.pbxproj"
 sed -i '' "s/CURRENT_PROJECT_VERSION = .*/CURRENT_PROJECT_VERSION = $BUILD_NUMBER;/" "$SCHEME.xcodeproj/project.pbxproj"
+
+echo "==> Committing version bump..."
+git add -A
+git commit -m "Bump version to $VERSION ($BUILD_NUMBER)"
+git push
+
+echo "==> Tagging v$VERSION..."
+git tag -f "v$VERSION"
+git push origin "v$VERSION" -f
 
 echo "==> Building Release..."
 rm -rf "$BUILD_DIR"
