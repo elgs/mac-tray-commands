@@ -30,6 +30,11 @@ fi
 echo "==> Tagging v$VERSION..."
 git tag -f "v$VERSION"
 
+BUILD_NUMBER=$(git rev-list HEAD --count)
+echo "==> Setting version to $VERSION ($BUILD_NUMBER)..."
+sed -i '' "s/MARKETING_VERSION = .*/MARKETING_VERSION = $VERSION;/" "$SCHEME.xcodeproj/project.pbxproj"
+sed -i '' "s/CURRENT_PROJECT_VERSION = .*/CURRENT_PROJECT_VERSION = $BUILD_NUMBER;/" "$SCHEME.xcodeproj/project.pbxproj"
+
 echo "==> Building Release..."
 rm -rf "$BUILD_DIR"
 xcodebuild -project "$SCHEME.xcodeproj" \

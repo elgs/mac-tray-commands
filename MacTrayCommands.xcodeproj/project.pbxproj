@@ -132,7 +132,7 @@
 				B231D5AD698C4FB680EAAE22 /* Sources */,
 				E72452FA071D47CBB0BDB3F9 /* Frameworks */,
 				DB891BAAB4524ACC835E3F73 /* Resources */,
-				A1B2C3D4E5F67890AABBCCDD /* Set Version from Git Tag */,
+
 			);
 			buildRules = (
 			);
@@ -208,20 +208,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A1B2C3D4E5F67890AABBCCDD /* Set Version from Git Tag */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Set Version from Git Tag";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo \"0.0.0\")\nVERSION=${GIT_TAG#v}\nBUILD=$(git rev-list HEAD --count 2>/dev/null || echo \"1\")\nPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $VERSION\" \"$PLIST\" 2>/dev/null || /usr/libexec/PlistBuddy -c \"Add :CFBundleShortVersionString string $VERSION\" \"$PLIST\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD\" \"$PLIST\" 2>/dev/null || /usr/libexec/PlistBuddy -c \"Add :CFBundleVersion string $BUILD\" \"$PLIST\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
