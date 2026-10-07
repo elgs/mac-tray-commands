@@ -24,6 +24,10 @@ struct CommandListView: View {
                 }
                 .onMove(perform: onMove)
             }
+            // Keep the list out of the title bar's safe area. Otherwise the scroll
+            // view extends under the glass title bar and rows can scroll up beneath
+            // it, hiding the first (often selected) row.
+            .padding(.top, 1)
 
             Divider()
 

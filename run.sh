@@ -15,6 +15,7 @@ pkill -x "$SCHEME" 2>/dev/null && sleep 0.5 || true
 echo "==> Building..."
 xcodebuild -project "$SCHEME.xcodeproj" \
     -scheme "$SCHEME" \
+    -destination 'platform=macOS,arch=arm64' \
     -configuration Debug \
     build \
     CONFIGURATION_BUILD_DIR="$BUILD_DIR" \

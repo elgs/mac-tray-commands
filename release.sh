@@ -45,6 +45,7 @@ echo "==> Building Release..."
 rm -rf "$BUILD_DIR"
 xcodebuild -project "$SCHEME.xcodeproj" \
     -scheme "$SCHEME" \
+    -destination 'platform=macOS,arch=arm64' \
     -configuration Release \
     build \
     CONFIGURATION_BUILD_DIR="$BUILD_DIR" \

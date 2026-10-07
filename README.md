@@ -10,6 +10,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-13.0%2B-blue" alt="macOS 13.0+">
+  <img src="https://img.shields.io/badge/Apple%20Silicon-arm64-lightgrey" alt="Apple Silicon only">
   <img src="https://img.shields.io/badge/Swift-5.9-orange" alt="Swift 5.9">
   <a href="https://github.com/elgs/mac-tray-commands/releases/latest"><img src="https://img.shields.io/github/v/release/elgs/mac-tray-commands" alt="Latest Release"></a>
 </p>
@@ -45,7 +46,7 @@ Download the latest `.dmg` from [Releases](https://github.com/elgs/mac-tray-comm
 ```bash
 git clone https://github.com/elgs/mac-tray-commands.git
 cd mac-tray-commands
-xcodebuild -scheme MacTrayCommands -configuration Release build CONFIGURATION_BUILD_DIR=build
+xcodebuild -scheme MacTrayCommands -configuration Release -destination 'platform=macOS,arch=arm64' build CONFIGURATION_BUILD_DIR=build
 cp -R build/MacTrayCommands.app /Applications/
 ```
 

@@ -144,16 +144,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @objc func openSettings() {
         if settingsWindow == nil {
+            // .fullSizeContentView lets the SwiftUI content extend under the unified
+            // title bar. NavigationSplitView assumes this on macOS 26+ and draws its
+            // per-column title bar backgrounds there; without it they land 52pt below
+            // the real title bar and cover the top of the detail view.
+            let titleBarHeight: CGFloat = 52
+            let contentSize = NSSize(width: 900, height: 650 + titleBarHeight)
             let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 900, height: 650),
-                styleMask: [.titled, .closable, .resizable],
+                contentRect: NSRect(origin: .zero, size: contentSize),
+                styleMask: [.titled, .closable, .resizable, .fullSizeContentView],
                 backing: .buffered,
                 defer: false
             )
             window.title = "MacTrayCommands — Settings"
             let controller = NSHostingController(rootView: SettingsView(store: store))
             window.contentViewController = controller
-            window.setContentSize(NSSize(width: 900, height: 650))
+            window.setContentSize(contentSize)
             window.contentMinSize = NSSize(width: 560, height: 380)
             window.isReleasedWhenClosed = false
             window.center()
