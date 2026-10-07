@@ -81,7 +81,7 @@ Add, edit, and remove commands. Choose between running in Terminal or silently i
 
 The app checks the Homebrew cask for a newer version a minute after launch and about once a day after that. When one is found, the menu bar icon gains a small blue badge dot (hover for the version) and the menu shows an **Update to X…** item. Clicking it:
 
-1. Downloads the release DMG from GitHub Releases (the menu shows the progress, with a **Cancel Download** item).
+1. Downloads the release DMG from GitHub Releases. A small progress window shows the download with a **Cancel** button, then "Verifying and installing…"; the menu shows the same progress and a **Cancel Download** item.
 2. Verifies the download: the SHA-256 must match the cask, the code signature must be intact, the Team ID must match the running app, and the macOS the new bundle asks for (`LSMinimumSystemVersion`) must not be newer than the one this Mac runs.
 3. Swaps the new bundle into place (one atomic exchange; volumes without swap support fall back to two renames) and relaunches.
 

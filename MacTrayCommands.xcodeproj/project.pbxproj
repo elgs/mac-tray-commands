@@ -21,6 +21,7 @@
 		B2C3D4E5F60718293A4B5C6D /* UpdateCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* UpdateCatalog.swift */; };
 		D4E5F60718293A4B5C6D7E8F /* UpdateInstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F60718293A4B5C6D7E /* UpdateInstall.swift */; };
 		F60718293A4B5C6D7E8F90A1 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F60718293A4B5C6D7E8F90 /* Updater.swift */; };
+		1B2C3D4E5F60718293A4B5C6 /* UpdateProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1B2C3D4E5F60718293A4B5 /* UpdateProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A1B2C3D4E5F60718293A4B5C /* UpdateCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCatalog.swift; sourceTree = "<group>"; };
 		C3D4E5F60718293A4B5C6D7E /* UpdateInstall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInstall.swift; sourceTree = "<group>"; };
 		E5F60718293A4B5C6D7E8F90 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
+		0A1B2C3D4E5F60718293A4B5 /* UpdateProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				2E93010E9E6C4A34AEE32E37 /* CommandListView.swift */,
 				BB05FD69893E4911919F7D31 /* CommandEditView.swift */,
 				3A7B2C9D1E5F48A0B6C8D4E2 /* ShellEditorView.swift */,
+				0A1B2C3D4E5F60718293A4B5 /* UpdateProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				DFC82100FBEB41BEBCFB23C3 /* CommandListView.swift in Sources */,
 				55865C70829447DCA9371A44 /* CommandEditView.swift in Sources */,
 				9E1F3A5B7C2D4E6F8A0B1C3D /* ShellEditorView.swift in Sources */,
+				1B2C3D4E5F60718293A4B5C6 /* UpdateProgressView.swift in Sources */,
 				B2C3D4E5F60718293A4B5C6D /* UpdateCatalog.swift in Sources */,
 				D4E5F60718293A4B5C6D7E8F /* UpdateInstall.swift in Sources */,
 				F60718293A4B5C6D7E8F90A1 /* Updater.swift in Sources */,

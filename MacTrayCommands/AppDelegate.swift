@@ -9,6 +9,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     let store = CommandStore()
     let updater = Updater()
     private var settingsWindow: NSWindow?
+    private var updateProgressWindow: NSWindow?
     private var hotKeyRef: EventHotKeyRef?
     private var updaterObserver: AnyCancellable?
     /// Re-renders the icon when the menu bar flips light/dark. Needed
@@ -42,6 +43,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             DispatchQueue.main.async {
                 self?.updateMenuBarIcon()
                 self?.buildMenu()
+                self?.updateProgressWindowVisibility()
             }
         }
         updater.onInstallFailed = { [weak self] message in
@@ -369,6 +371,45 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         CFRunLoopWakeUp(CFRunLoopGetMain())
     }
 
+    // MARK: - Update progress window
+
+    /// A small floating window with the progress bar while an update is in
+    /// flight. It opens on the first progress state and closes when the
+    /// install ends in any way other than the relaunch, which takes the
+    /// whole app with it; the failure alert then says what went wrong.
+    private func updateProgressWindowVisibility() {
+        switch updater.updateState {
+        case .downloading, .installing:
+            let window = updateProgressWindow ?? makeUpdateProgressWindow()
+            updateProgressWindow = window
+            if !window.isVisible {
+                NSApp.activate(ignoringOtherApps: true)
+                window.center()
+                window.makeKeyAndOrderFront(nil)
+            }
+        case .idle, .failed:
+            updateProgressWindow?.orderOut(nil)
+        }
+    }
+
+    private func makeUpdateProgressWindow() -> NSWindow {
+        let controller = NSHostingController(rootView: UpdateProgressView(updater: updater))
+        let window = NSWindow(
+            contentRect: NSRect(origin: .zero, size: controller.view.fittingSize),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Software Update"
+        window.contentViewController = controller
+        window.isReleasedWhenClosed = false
+        // Above other apps' windows: the user may have moved on while the
+        // download runs, and the bar must stay in view without activation.
+        window.level = .floating
+        window.delegate = self
+        return window
+    }
+
     // MARK: - Windows
 
     @objc func showAbout() {
@@ -409,6 +450,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
         settingsWindow?.makeKeyAndOrderFront(nil)
+    }
+
+    /// Closing the progress window mid-download cancels the download, as
+    /// the Cancel button would; mid-install it only hides the window.
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        if sender === updateProgressWindow {
+            updater.cancelUpdate()
+        }
+        return true
     }
 
     func windowWillClose(_ notification: Notification) {
