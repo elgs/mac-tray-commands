@@ -361,7 +361,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             // The app isn't active when a menu item is clicked; bring it
             // forward or the alert opens behind everything.
             NSApp.activate(ignoringOtherApps: true)
-            handler?(alert.runModal())
+            // Run first, then hand over: `handler?(alert.runModal())` would
+            // skip the whole call, alert included, whenever handler is nil.
+            let response = alert.runModal()
+            handler?(response)
         }
         CFRunLoopWakeUp(CFRunLoopGetMain())
     }
