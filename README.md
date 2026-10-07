@@ -87,7 +87,7 @@ The app checks the Homebrew cask for a newer version a minute after launch and a
 
 The automatic check is silent: a flaky network never produces a dialog. **Check for Updates…** in the menu runs the same check right away and answers with an alert, whichever way it goes, and an update found that way can be installed from the alert.
 
-If any step fails (for example, the install location isn't writable), an alert says why and nothing is changed; `brew upgrade --cask mac-tray-commands` always works as a fallback. Updating in-app leaves Homebrew's recorded version behind until the next `brew upgrade`, which harmlessly reinstalls the current release.
+If any step fails (for example, the install location isn't writable), an alert says why and nothing is changed; `brew upgrade --cask mac-tray-commands` always works as a fallback. Updating in-app leaves Homebrew's recorded version behind until the next `brew upgrade`, which harmlessly reinstalls the current release. A `brew upgrade` that brings a new version quits the app first and reopens it afterwards (the cask asks Homebrew to), so the copy in the menu bar is always the one installed.
 
 A release is offered only to a Mac that can run it. The cask's `depends_on macos:` line names the oldest macOS a release supports; when this Mac runs something older, no update is offered and the installed version stays, and a clicked **Check for Updates…** says which macOS the release needs. The downloaded bundle's own minimum is checked again before anything is installed, so a working copy is never replaced by an app macOS will not open.
 
